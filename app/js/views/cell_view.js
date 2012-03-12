@@ -19,11 +19,11 @@ var CellView = Backbone.View.extend({
   mark: function(event) {
     if(event.button == 2) {
       this.model.mark_toggle();
-      event.preventDefault();
-      return false;
     } else {
       this.open(event);
     }
+    event.preventDefault();
+    return false;
   },
   open: function(event) {
     if (this.model.has_mine()) {
@@ -40,18 +40,17 @@ var CellView = Backbone.View.extend({
     $(this.el).removeClass('cover open blow mark');
     if (state == 'cover') {
       $(this.el).addClass('cover');
-      $(this.el).html('&nbsp;');
     } else if (state == 'mark') {
       $(this.el).addClass('mark');
-      $(this.el).html('@');
+      $(this.el).html('&#x2691;');
     } else {
       if (this.model.has_mine()) {
         $(this.el).addClass('blow');
-        $(this.el).html('M');
+       $(this.el).html('&#x274B;');
       } else {
-        $(this.el).addClass('open');
         var mines_count = this.model.count_mines();
-        $(this.el).html(mines_count > 0 ? mines_count : '&nbsp;');
+        $(this.el).addClass('open' + (mines_count > 0 ? ' open'+mines_count : ''));
+        $(this.el).html(mines_count);
       }
     }
     return $(this.el);
