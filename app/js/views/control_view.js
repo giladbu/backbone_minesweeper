@@ -14,11 +14,11 @@ var ControlView = Backbone.View.extend({
   },
 
   render: function() {
-    count = this.model.mines - this.model.models.reduce(function(memo, cell) {
+    count = this.model.mines - _.reduce(this.model.models, function(memo, cell) {
       return memo += cell.get('state') == 'mark' ? 1 : 0
     }, 0);
     $(this.el).html('count: ' + count + ' time: <span id="timer">'+ this.render_time() +'</span>');
-    covered = this.model.models.reduce(function(memo, cell) {
+    covered = _.reduce(this.model.models, function(memo, cell) {
       return memo += (cell.get('state') == 'cover') ? 1 : 0
     }, 0);
     if(covered == 0) {

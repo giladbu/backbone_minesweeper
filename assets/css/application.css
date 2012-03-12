@@ -1,20 +1,64 @@
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 .cell {
-  border: 1px solid black;
-  min-height: 30px;
-  margin-bottom: 20px;
+  border: 4px solid #333;
+  border-color: #DDD #333 #333 #DDD;
+  width: 36px;
+  height: 36px;
+  margin: 0;
   text-align: center;
+  line-height: 36px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  user-select: none;
 }
+
+.cell.blow,
 .cell.open {
-  background-color: white;
+  border-color: #333;
+  border-width: 0 1px 1px 0;
+}
+.cell.open:first-child, 
+.cell.blow:first-child {
+  border-left-width: 1px;
+}
+.row:nth-child(2) .cell.open,
+.row:nth-child(2) .cell.blow {
+  border-top-width: 1px;
+}
+
+.cell.open {
+  background-color: #BBB;
+  color: #999;
+}
+.cell.open1 {
+  color: blue;
+}
+.cell.open2 {
+  color: green;
+}
+.cell.open3 {
+  color: red; 
+}
+.cell.open4 {
+  color: #007;
+}
+.cell.open5 {
+  color: #700;
+}
+.cell.open6, 
+.cell.open7, 
+.cell.open8 {
+  color: #070;
 }
 .cell.cover {
-  background-color: gray;
+  background-color: #BBB;
 }
 .cell.mark {
-  background-color: green;
+  background-color: #BBB;
+  line-height: 24px;
+  color: red;
 }
 .cell.blow {
   background-color: red;
@@ -24,7 +68,6 @@
   text-align: center;
   font-size: 14px;
 }
-
 .board_control .controls {
   border: 2px solid black;
   padding-top: 20px;

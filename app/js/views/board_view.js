@@ -24,5 +24,5 @@ var BoardView = Backbone.View.extend({
       }
       $(this.el).append(row);
     }
-  },
+  }
 });
